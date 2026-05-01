@@ -1,6 +1,6 @@
 ---
-name: airtable-mcp-cli
-description: How to use the Airtable MCP CLI to manage bases, tables, and records from the terminal. Use when the user wants to interact with Airtable from the command line or a script.
+name: using-airtable-mcp-cli
+description: Explains how to install and run the Airtable MCP CLI to manage bases, tables, and records from the terminal. Use when the user wants to run airtable-mcp commands, set up credentials, script against Airtable, or pipe tool output in automation.
 license: MIT
 metadata:
     version: '1.0.0'

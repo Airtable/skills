@@ -1,12 +1,12 @@
 # Airtable
 
-Skills, hand-off conventions, and the official Airtable MCP server — everything an AI agent needs to drive Airtable competently.
+Airtable is the database and operations layer for your agents — whether running product, marketing, sales, ops, HR, or a custom business app. It combines structured data with multiplayer visual surfaces (grid, kanban, calendar, gallery, timeline) humans and agents share — plus sync integrations to Jira, Salesforce, Zendesk, Google Drive, Databricks, and the rest of your stack, all backed by enterprise governance.
 
-This repo is bundled as an installable plugin for [Claude Code](https://code.claude.com) and [Codex](https://developers.openai.com/codex), and as a standalone collection of skills installable via the [`skills` CLI](https://github.com/vercel-labs/skills) for any agent that consumes [agentskills.io](https://agentskills.io)–format skills.
+This repo is the canonical, official home for the plugins, skills, and other artifacts we ship to make Airtable as fluent to agents as it already is to builders and users. Today that ships as an installable plugin for [Claude Code](https://code.claude.com) and [Codex](https://developers.openai.com/codex), and as a standalone collection of skills installable via the [`skills` CLI](https://github.com/vercel-labs/skills) for any agent that consumes [agentskills.io](https://agentskills.io)–format skills.
 
 ## What's inside
 
-Skills covering the Airtable data model, filter syntax, and agent workflow conventions, plus the official Airtable MCP server (`mcp.airtable.com/mcp`) auto-wired via `.mcp.json`. The bundled skills live under [`plugins/airtable/skills/`](./plugins/airtable/skills/).
+The bundled skills live under [`plugins/airtable/skills/`](./plugins/airtable/skills/), and the official Airtable MCP server (`mcp.airtable.com/mcp`) is auto-wired via `.mcp.json`.
 
 ## Install
 

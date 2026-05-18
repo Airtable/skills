@@ -16,7 +16,7 @@ jobs:
 
         steps:
             - name: Checkout repo
-              uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+              uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
             - name: Set release tag (date-based)
               id: tag
@@ -24,8 +24,18 @@ jobs:
 
             - name: Create zip package
               run: |
-                  SKILLS_FOLDER="skills"
-                  zip -r airtable-skills.zip "$SKILLS_FOLDER" --include '*.md'
+                  # Bundle the entire marketplace (Claude + Codex marketplace
+                  # catalogs, every plugin under plugins/, README, LICENSE) so
+                  # the release zip is a complete plugin snapshot for offline
+                  # use. Live install via the `skills` CLI / `/plugin
+                  # marketplace add airtable/skills` continues to work off the
+                  # cloned repo.
+                  zip -r airtable-skills.zip \
+                      .claude-plugin \
+                      .agents \
+                      plugins \
+                      README.md \
+                      LICENSE.md
 
             - name: Delete existing release for today (if re-running)
               env:

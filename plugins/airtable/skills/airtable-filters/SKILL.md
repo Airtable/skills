@@ -1,6 +1,6 @@
 ---
 name: airtable-filters
-description: Use this skill when the user wants to find, filter, or narrow down Airtable records by field values, even when they don't explicitly say "filter."
+description: Builds Airtable filters parameters for the MCP tools that list or display records — field-type-aware comparison operators, choice and collaborator IDs, date ranges, and nested AND/OR logic. Use when the user wants to find, filter, narrow down, or search Airtable records by field values, even when they don't explicitly say "filter."
 license: MIT
 metadata:
     version: '1.0.0'
@@ -55,13 +55,13 @@ When matching a field against multiple values, prefer dedicated operators (`isAn
 
 ### Select fields
 
-For select fields, operand values must be **choice IDs** (e.g., `"selABCDEFGHIJKLM"`), not display names. Look up the table's schema to find choice IDs before filtering.
+For select fields, operand values must be **choice IDs** (e.g., `"selEXAMPLEchoice1"`), not display names. Look up the table's schema to find choice IDs before filtering.
 
 ### Collaborator fields
 
 When filtering by a collaborator group ID, use `operatorOptions` to match individual members of the group instead of the literal group ID. See the tool's `operatorOptions` parameter for details.
 
-Example operand: `{"operator": "hasAnyOf", "operands": ["fldCRi9oz2vRLcIWr", "ugpDUVUnftA7H9bG8"], "operatorOptions": {"matchGroupsByMembership": true}}`
+Example operand: `{"operator": "hasAnyOf", "operands": ["fldEXAMPLEfield03", "ugpEXAMPLEgroup01"], "operatorOptions": {"matchGroupsByMembership": true}}`
 
 ### Attachment fields
 
@@ -99,8 +99,8 @@ Filter where a text field equals "orange" OR a number field is greater than 5:
 {
     "operator": "or",
     "operands": [
-        {"operator": "=", "operands": ["fld8WsrpLHHevsnW8", "orange"]},
-        {"operator": ">", "operands": ["fldulcCPDVz87Bmnw", 5]}
+        {"operator": "=", "operands": ["fldEXAMPLEfield01", "orange"]},
+        {"operator": ">", "operands": ["fldEXAMPLEfield04", 5]}
     ]
 }
 ```
@@ -112,7 +112,7 @@ Filter for records where a date field is within the past week:
     "operands": [
         {
             "operator": "isWithin",
-            "operands": ["fldABC12345678x", {"mode": "pastWeek", "timeZone": "America/New_York"}]
+            "operands": ["fldEXAMPLEdate001", {"mode": "pastWeek", "timeZone": "America/New_York"}]
         }
     ]
 }

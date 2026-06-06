@@ -1,10 +1,10 @@
 ---
 name: airtable-cli
-description: >-
-    Lists bases, reads and writes records, manages tables and fields, filters and
-    searches data in Airtable via the `airtable-mcp` CLI. Use when the task
-    involves Airtable data or the user mentions airtable-mcp, bases, tables,
-    records, or fields.
+description: Lists bases, reads and writes records, manages tables and fields, filters and searches data in Airtable via the `airtable-mcp` CLI. Use when the task involves Airtable data or the user mentions airtable-mcp, bases, tables, records, or fields.
+license: MIT
+metadata:
+    version: '1.0.0'
+    author: airtable
 ---
 
 # airtable-mcp
@@ -90,14 +90,14 @@ Tool names use hyphens on the CLI (`list-records`) but underscores in MCP (`list
 
 ```sh
 airtable-mcp search-bases --searchQuery "Project Tracker" -q
-airtable-mcp list-tables-for-base --baseId appK9MtBqFw3o5jGN -q
+airtable-mcp list-tables-for-base --baseId appEXAMPLEbase001 -q
 ```
 
 **List records with specific fields:**
 
 ```sh
 airtable-mcp list-records-for-table \
-  --baseId appK9MtBqFw3o5jGN --tableId tblL4GpTfEz8byRsW \
+  --baseId appEXAMPLEbase001 --tableId tblEXAMPLEtable01 \
   --fieldIds '["Name","Status"]' --pageSize 10 -q
 ```
 
@@ -105,7 +105,7 @@ airtable-mcp list-records-for-table \
 
 ```sh
 airtable-mcp list-records-for-table \
-  --baseId appK9MtBqFw3o5jGN --tableId tblL4GpTfEz8byRsW \
+  --baseId appEXAMPLEbase001 --tableId tblEXAMPLEtable01 \
   --filters '{"operator":"and","operands":[{"operator":"=","operands":["Status","Done"]}]}' -q
 ```
 
@@ -115,7 +115,7 @@ For select fields, filter by choice ID (from `get-table-schema`), not the displa
 
 ```sh
 airtable-mcp search-records \
-  --baseId appK9MtBqFw3o5jGN --table tblL4GpTfEz8byRsW \
+  --baseId appEXAMPLEbase001 --table tblEXAMPLEtable01 \
   --query "acme" --fields '["Name","Notes"]' -q
 ```
 
@@ -124,11 +124,11 @@ Pass `--fields ALL_SEARCHABLE_FIELDS` to search across every indexed field. Date
 **Update records** — complex args are easier via `--input -`:
 
 ```sh
-echo '{"baseId":"appK9MtBqFw3o5jGN","tableId":"tblL4GpTfEz8byRsW","records":[{"id":"recVnR3xPq8sD2yLk","fields":{"fld8WsrpLHHevsnW8":"Done"}}]}' \
+echo '{"baseId":"appEXAMPLEbase001","tableId":"tblEXAMPLEtable01","records":[{"id":"recEXAMPLErecord1","fields":{"fldEXAMPLEfield01":"Done"}}]}' \
   | airtable-mcp update-records-for-table --input - -q
 ```
 
-Select field values are returned as objects (`{"id":"sel...","name":"Done"}`) but must be written as plain strings (`"Done"`). Record field keys in create/update currently require field IDs (`fldXXX`) — use `get-table-schema` to resolve names to IDs before writing. Note that `fieldIds`, `sort`, and `filters` accept both names and IDs.
+Select field values are returned as objects (`{"id":"sel...","name":"Done"}`) but must be written as plain strings (`"Done"`). Record field keys in create/update currently require field IDs (`fldEXAMPLEfield02`) — use `get-table-schema` to resolve names to IDs before writing. Note that `fieldIds`, `sort`, and `filters` accept both names and IDs.
 
 ## Gotchas
 

@@ -48,10 +48,15 @@ url = "https://mcp.airtable.com/mcp"
 
 ### Cursor
 
+Browse the [Cursor Marketplace](https://cursor.com/marketplace) or add the plugin from the Customize panel in the sidebar. In the editor you can also run `/add-plugin`.
+
+To test locally from a clone before it's live in the marketplace, symlink or copy the plugin into Cursor's local plugins directory:
+
 ```bash
-cursor plugin marketplace add airtable/skills
-cursor plugin install airtable@airtable-skills
+ln -s "$(pwd)/plugins/airtable" ~/.cursor/plugins/local/airtable
 ```
+
+Cursor picks up plugins under `~/.cursor/plugins/local` automatically.
 
 ### Standalone skills (any agent)
 

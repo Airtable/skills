@@ -24,15 +24,16 @@ jobs:
 
             - name: Create zip package
               run: |
-                  # Bundle the entire marketplace (Claude + Codex marketplace
-                  # catalogs, every plugin under plugins/, README, LICENSE) so
-                  # the release zip is a complete plugin snapshot for offline
-                  # use. Live install via the `skills` CLI / `/plugin
-                  # marketplace add airtable/skills` continues to work off the
-                  # cloned repo.
+                  # Bundle the entire marketplace (Claude + Codex + Cursor
+                  # marketplace catalogs, every plugin under plugins/, README,
+                  # LICENSE) so the release zip is a complete plugin snapshot
+                  # for offline use. Live install via the `skills` CLI /
+                  # `/plugin marketplace add airtable/skills` continues to work
+                  # off the cloned repo.
                   zip -r airtable-skills.zip \
                       .claude-plugin \
                       .agents \
+                      .cursor-plugin \
                       plugins \
                       README.md \
                       LICENSE.md

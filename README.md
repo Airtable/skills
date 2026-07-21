@@ -2,7 +2,7 @@
 
 Airtable is the database and operations layer for your agents — whether running product, marketing, sales, ops, HR, or a custom business app. It combines structured data with multiplayer visual surfaces (grid, kanban, calendar, gallery, timeline) humans and agents share — plus sync integrations to Jira, Salesforce, Zendesk, Google Drive, Databricks, and the rest of your stack, all backed by enterprise governance.
 
-This repo is the canonical, official home for the plugins, skills, and other artifacts we ship to make Airtable as fluent to agents as it already is to builders and users. Today that ships as an installable plugin for [Claude Code](https://code.claude.com) and [Codex](https://developers.openai.com/codex), and as a standalone collection of skills installable via the [`skills` CLI](https://github.com/vercel-labs/skills) for any agent that consumes [agentskills.io](https://agentskills.io)–format skills.
+This repo is the canonical, official home for the plugins, skills, and other artifacts we ship to make Airtable as fluent to agents as it already is to builders and users. Today that ships as an installable plugin for [Claude Code](https://code.claude.com), [Codex](https://developers.openai.com/codex), and [Cursor](https://cursor.com), and as a standalone collection of skills installable via the [`skills` CLI](https://github.com/vercel-labs/skills) for any agent that consumes [agentskills.io](https://agentskills.io)–format skills.
 
 ## What's inside
 
@@ -46,9 +46,21 @@ type = "http"
 url = "https://mcp.airtable.com/mcp"
 ```
 
+### Cursor
+
+Browse the [Cursor Marketplace](https://cursor.com/marketplace) or add the plugin from the Customize panel in the sidebar. In the editor you can also run `/add-plugin`.
+
+To test locally from a clone before it's live in the marketplace, symlink or copy the plugin into Cursor's local plugins directory:
+
+```bash
+ln -s "$(pwd)/plugins/airtable" ~/.cursor/plugins/local/airtable
+```
+
+Cursor picks up plugins under `~/.cursor/plugins/local` automatically.
+
 ### Standalone skills (any agent)
 
-For Cursor, OpenCode, Pi, Gemini CLI, or any other agent that consumes [Agent Skills](https://agentskills.io):
+For OpenCode, Pi, Gemini CLI, or any other agent that consumes [Agent Skills](https://agentskills.io):
 
 ```bash
 # All skills
@@ -66,9 +78,11 @@ Or download the latest tagged release zip from [GitHub Releases](https://github.
 .
 ├── .claude-plugin/marketplace.json     # Claude marketplace catalog
 ├── .agents/plugins/marketplace.json    # Codex marketplace catalog
+├── .cursor-plugin/marketplace.json     # Cursor marketplace catalog
 └── plugins/airtable/                   # the V1 plugin
     ├── .claude-plugin/plugin.json
     ├── .codex-plugin/plugin.json
+    ├── .cursor-plugin/plugin.json
     ├── .mcp.json
     └── skills/
 ```
